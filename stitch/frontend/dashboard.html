@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="dashboard">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main dashboard-main">
+            <h1 class="page-title">Welcome, <span id="welcome-name">Clinician</span></h1>
+            <p class="page-subtitle">AI-driven summary and decision support for quick understanding.</p>
+
+            <section class="card dashboard-hero-card">
+                <div class="dashboard-hero-grid">
+                    <div>
+                        <p class="dashboard-kicker">Overall Wellness Score</p>
+                        <h2 id="overall-wellness-score" class="dashboard-overall-score">--</h2>
+                        <div class="dashboard-status-row">
+                            <span id="overall-wellness-status" class="dashboard-status-badge">--</span>
+                            <span id="dashboard-trend-text" class="dashboard-mini-tag">--</span>
+                        </div>
+                        <p id="dashboard-summary-note" class="dashboard-note">Loading dashboard summary...</p>
+                    </div>
+                    <div class="dashboard-hero-metrics">
+                        <div class="dashboard-hero-metric">
+                            <span>Last Prediction</span>
+                            <strong id="last-prediction">--</strong>
+                        </div>
+                        <div class="dashboard-hero-metric">
+                            <span>Confidence</span>
+                            <strong id="last-confidence">--</strong>
+                        </div>
+                        <div class="dashboard-hero-metric">
+                            <span>Total Predictions</span>
+                            <strong id="prediction-count">0</strong>
+                        </div>
+                        <p id="dashboard-mini-summary" class="dashboard-mini-summary">--</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-2 dashboard-section" style="margin-top:18px;">
+                <article class="card dashboard-card dashboard-insight-card">
+                    <h3 class="dashboard-card-title">Today’s AI Insight</h3>
+                    <p id="dashboard-ai-insight" class="dashboard-highlight-text">Loading latest insight...</p>
+                </article>
+
+                <article class="card dashboard-card dashboard-compare-card">
+                    <h3 class="dashboard-card-title">Quick Comparison</h3>
+                    <p id="dashboard-comparison-status" class="dashboard-comparison-status">--</p>
+                    <p id="dashboard-comparison-text" class="dashboard-note">--</p>
+                    <p id="dashboard-comparison-values" class="dashboard-comparison-values">--</p>
+                </article>
+            </section>
+
+            <section class="grid grid-2 dashboard-section" style="margin-top:18px;">
+                <article class="card dashboard-card">
+                    <h3 class="dashboard-card-title">Top Influencing Factors</h3>
+                    <div id="dashboard-factor-list" class="dashboard-factor-list"></div>
+                </article>
+
+                <article class="card dashboard-card">
+                    <h3 class="dashboard-card-title">Alert System</h3>
+                    <ul id="dashboard-alert-list" class="dashboard-alert-list"></ul>
+                </article>
+            </section>
+
+            <section class="grid grid-2 dashboard-section" style="margin-top:18px;">
+                <article class="card dashboard-card">
+                    <h3 class="dashboard-card-title">Goal Tracker</h3>
+                    <div class="dashboard-goal-row">
+                        <input id="dashboard-target-input" type="number" min="35" max="95" step="0.1"
+                            aria-label="Target life expectancy" />
+                        <button id="dashboard-target-save" class="btn btn-secondary" type="button">Save Target</button>
+                    </div>
+                    <div class="dashboard-goal-meta">
+                        <span>Current: <strong id="dashboard-goal-current">--</strong></span>
+                        <span>Target: <strong id="dashboard-goal-target">--</strong></span>
+                        <span id="dashboard-goal-percent">--</span>
+                    </div>
+                    <div class="progress dashboard-progress"><span id="dashboard-goal-progress"></span></div>
+                </article>
+
+                <article class="card dashboard-card">
+                    <h3 class="dashboard-card-title">Change Since Last Prediction</h3>
+                    <p id="dashboard-change-value" class="dashboard-change-value">--</p>
+                    <ul id="dashboard-change-reasons" class="dashboard-bullet-list"></ul>
+                </article>
+            </section>
+
+            <section class="grid grid-2 dashboard-section" style="margin-top:18px;">
+                <article class="card dashboard-card">
+                    <h3 class="dashboard-card-title">Smart Recommendations</h3>
+                    <p id="dashboard-recommendation-summary" class="dashboard-note">Actionable guidance based on the
+                        latest risk pattern.</p>
+                    <ul id="dashboard-recommendation-list" class="dashboard-bullet-list"></ul>
+                </article>
+
+                <article class="card dashboard-card dashboard-actions-card">
+                    <h3 class="dashboard-card-title">Quick Actions</h3>
+                    <div class="dashboard-action-grid">
+                        <a class="btn btn-primary dashboard-action-button" href="predict.html">Run Prediction</a>
+                        <a class="btn btn-secondary dashboard-action-button" href="analytics.html">View Analytics</a>
+                        <a class="btn btn-secondary dashboard-action-button" href="history.html">View History</a>
+                    </div>
+                    <p class="dashboard-note">Use these shortcuts to move from insight to action quickly.</p>
+                </article>
+            </section>
+
+            <p id="dashboard-error" class="error-text" style="margin-top:12px;"></p>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

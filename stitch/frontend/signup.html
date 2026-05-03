@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="signup">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="auth-shell">
+        <section class="auth-card">
+            <div class="brand">LifeVitals</div>
+            <h1 class="page-title" style="margin-top:10px;">Create your account</h1>
+            <p class="page-subtitle">Multi-step onboarding for personalized healthcare predictions.</p>
+            <div class="progress"><span id="signup-progress"></span></div>
+            <p id="step-indicator" style="margin:10px 0 0;color:var(--muted);font-size:.9rem;"></p>
+
+            <form id="signup-form" style="margin-top:18px;">
+                <section data-step="1" class="grid">
+                    <h3 style="margin:0;">Step 1: Basic Info</h3>
+                    <div class="form-row">
+                        <div>
+                            <label for="full_name">Full Name</label>
+                            <input id="full_name" required />
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input id="email" type="email" required />
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input id="password" type="password" minlength="8" required />
+                        </div>
+                        <div>
+                            <label for="confirm_password">Confirm Password</label>
+                            <input id="confirm_password" type="password" minlength="8" required />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-step="2" class="grid hidden">
+                    <h3 style="margin:0;">Step 2: Demographics</h3>
+                    <div class="form-row">
+                        <div>
+                            <label for="age">Age</label>
+                            <input id="age" type="number" min="1" max="120" required />
+                        </div>
+                        <div>
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <label for="country">Country</label>
+                            <input id="country" required />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-step="3" class="grid hidden">
+                    <h3 style="margin:0;">Step 3: Health Profile</h3>
+                    <div class="form-row">
+                        <div>
+                            <label for="height_cm">Height (cm)</label>
+                            <input id="height_cm" type="number" min="50" max="250" required />
+                        </div>
+                        <div>
+                            <label for="weight_kg">Weight (kg)</label>
+                            <input id="weight_kg" type="number" min="20" max="400" required />
+                        </div>
+                        <div>
+                            <label for="bmi_preview">Auto BMI</label>
+                            <input id="bmi_preview" readonly />
+                        </div>
+                        <div>
+                            <label for="smoking_status">Smoking Status</label>
+                            <select id="smoking_status" required>
+                                <option value="">Select</option>
+                                <option>Never</option>
+                                <option>Former</option>
+                                <option>Current</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="alcohol_consumption">Alcohol Consumption</label>
+                            <select id="alcohol_consumption" required>
+                                <option value="">Select</option>
+                                <option>Low</option>
+                                <option>Moderate</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="physical_activity">Physical Activity</label>
+                            <select id="physical_activity" required>
+                                <option value="">Select</option>
+                                <option>Low</option>
+                                <option>Moderate</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-step="4" class="grid hidden">
+                    <h3 style="margin:0;">Step 4: Socio-Economic Info</h3>
+                    <div class="form-row">
+                        <div>
+                            <label for="education_level">Education Level</label>
+                            <input id="education_level" required />
+                        </div>
+                        <div>
+                            <label for="occupation">Occupation</label>
+                            <input id="occupation" required />
+                        </div>
+                        <div>
+                            <label for="income_range">Income Range</label>
+                            <input id="income_range" required />
+                        </div>
+                        <div>
+                            <label for="user_role">User Role</label>
+                            <select id="user_role" required>
+                                <option value="">Select</option>
+                                <option>Student</option>
+                                <option>Researcher</option>
+                                <option>Healthcare Professional</option>
+                                <option>General User</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <p id="signup-error" class="error-text"></p>
+                <div style="display:flex;gap:10px;margin-top:16px;">
+                    <button id="prev-step" class="btn btn-secondary hidden" type="button">Previous</button>
+                    <button id="next-step" class="btn btn-secondary" type="button">Next</button>
+                    <button id="submit-signup" class="btn btn-primary hidden" type="submit">Create Account</button>
+                </div>
+            </form>
+
+            <p style="margin-top:14px;color:var(--muted);">Already registered? <a href="login.html"
+                    style="color:var(--primary);font-weight:600;">Sign in</a></p>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

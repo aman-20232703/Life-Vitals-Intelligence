@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="history">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main">
+            <h1 class="page-title">Prediction History</h1>
+            <p class="page-subtitle">Module-wise records with corrected local date and time.</p>
+
+            <section class="card history-filter-card">
+                <div class="history-filter-row">
+                    <span class="history-filter-label">Filter by date:</span>
+                    <div class="history-filter-buttons">
+                        <button class="btn btn-secondary history-filter-btn is-active" data-history-filter="all"
+                            type="button">All</button>
+                        <button class="btn btn-secondary history-filter-btn" data-history-filter="5min" type="button">5
+                            Minutes</button>
+                        <button class="btn btn-secondary history-filter-btn" data-history-filter="1hour" type="button">1
+                            Hour</button>
+                        <button class="btn btn-secondary history-filter-btn" data-history-filter="last7"
+                            type="button">Last 7 Days</button>
+                        <button class="btn btn-secondary history-filter-btn" data-history-filter="last30"
+                            type="button">Last 30 Days</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid history-grid">
+                <article class="card history-module-card">
+                    <h2 class="history-module-title">Life Expectancy</h2>
+                    <div style="overflow:auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Prediction</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                    <th>Insight</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-life-body"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card history-module-card">
+                    <h2 class="history-module-title">Economy</h2>
+                    <div style="overflow:auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Prediction</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                    <th>Insight</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-economy-body"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card history-module-card">
+                    <h2 class="history-module-title">Health</h2>
+                    <div style="overflow:auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Prediction</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                    <th>Insight</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-health-body"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card history-module-card">
+                    <h2 class="history-module-title">Social</h2>
+                    <div style="overflow:auto;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Prediction</th>
+                                    <th>Confidence</th>
+                                    <th>Status</th>
+                                    <th>Insight</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-social-body"></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <div id="history-detail-modal" class="history-modal hidden" role="dialog" aria-modal="true"
+        aria-labelledby="history-detail-title">
+        <div class="history-modal-backdrop" data-history-close-modal></div>
+        <div class="history-modal-content card">
+            <div class="history-modal-header">
+                <h3 id="history-detail-title" style="margin:0;">Life Expectancy Full Description</h3>
+                <button id="history-detail-close" class="btn btn-secondary" type="button"
+                    data-history-close-modal>Close</button>
+            </div>
+            <div id="history-detail-body" class="history-detail-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="analytics">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main">
+            <h1 class="page-title">Analytics & Insights</h1>
+            <p class="page-subtitle">Simple, visual analytics that transform model outputs into everyday insights.</p>
+
+            <section class="card analytics-overall-card">
+                <div class="analytics-overall-layout">
+                    <div>
+                        <p class="analytics-kicker">Overall Country Wellness Score</p>
+                        <h2 id="overall-score-value" class="analytics-overall-score">--</h2>
+                        <p id="overall-status" class="analytics-overall-status">Loading...</p>
+                        <p id="overall-note" class="analytics-note">Combines life expectancy, health, and social
+                            indicators.</p>
+                    </div>
+                    <div class="analytics-gauge-wrap">
+                        <canvas id="overall-gauge-chart" height="170"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid analytics-mid-grid" style="margin-top:18px;">
+                <article class="card analytics-card">
+                    <h3 class="analytics-card-title">Economic Strength Analysis</h3>
+                    <p class="analytics-inline-metric"><strong id="economy-score">--</strong> <span
+                            id="economy-label">--</span></p>
+                    <div class="analytics-meter" aria-label="Economic strength meter">
+                        <span id="economy-meter-fill"></span>
+                    </div>
+                    <p id="economy-note" class="analytics-note">--</p>
+                </article>
+
+                <article class="card analytics-card">
+                    <h3 class="analytics-card-title">Health Condition by Age Group</h3>
+                    <canvas id="health-age-chart" height="150"></canvas>
+                    <div id="health-group-summary" class="analytics-inline-list"></div>
+                </article>
+
+                <article class="card analytics-card">
+                    <h3 class="analytics-card-title">Social Development Index</h3>
+                    <p class="analytics-inline-metric"><strong id="social-score">--</strong> <span
+                            id="social-category">--</span></p>
+                    <canvas id="social-radar-chart" height="150"></canvas>
+                    <p id="social-note" class="analytics-note">--</p>
+                </article>
+            </section>
+
+            <section class="grid grid-2" style="margin-top:18px;">
+                <article class="card analytics-card">
+                    <h3 class="analytics-card-title">Future Life Expectancy Projection</h3>
+                    <canvas id="projection-line-chart" height="170"></canvas>
+                    <p class="analytics-note">Predicted <span id="projection-year">2035</span>: <strong
+                            id="projection-value">--</strong> years</p>
+                </article>
+
+                <article class="card analytics-card analytics-risk-card">
+                    <h3 class="analytics-card-title">Risk & Recommendations</h3>
+                    <p>Overall Risk: <span id="risk-badge" class="badge moderate">--</span></p>
+                    <p id="risk-summary" class="analytics-note">--</p>
+                    <ul id="recommendation-list" class="analytics-recommendations"></ul>
+                </article>
+            </section>
+
+            <p id="analytics-error" class="error-text" style="margin-top:12px;"></p>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="analytics.js"></script>
+</body>
+
+</html>

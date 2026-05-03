@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Map | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="map.css" />
+</head>
+
+<body data-page="map">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main map-main">
+            <h1 class="page-title">Global Population Insights Map</h1>
+            <p class="page-subtitle">Explore country-level life expectancy and module scores with dynamic metric and
+                year
+                filtering.</p>
+
+            <section class="card map-controls-card">
+                <div class="map-controls-grid">
+                    <div class="map-control-group">
+                        <label for="map-metric-select">Metric</label>
+                        <select id="map-metric-select">
+                            <option value="life">Life Expectancy</option>
+                            <option value="economy">Economy Score</option>
+                            <option value="health">Health Score</option>
+                            <option value="social">Social Score</option>
+                        </select>
+                    </div>
+                    <div class="map-control-group">
+                        <label for="map-year-select">Dataset Year</label>
+                        <select id="map-year-select">
+                            <option value="">Select year</option>
+                        </select>
+                    </div>
+                    <div class="map-control-group map-control-apply">
+                        <label for="map-apply-btn">Apply Filters</label>
+                        <button id="map-apply-btn" type="button" class="btn btn-primary">Show on Map</button>
+                    </div>
+                    <div class="map-summary-box">
+                        <p class="map-summary-label">Current View</p>
+                        <p id="map-current-view" class="map-summary-value">Life Expectancy</p>
+                        <p id="map-range-hint" class="map-summary-note">Country values are grouped into low, medium, and
+                            high bands.</p>
+                        <p id="map-year-hint" class="map-summary-note">Year: --</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card map-canvas-card">
+                <div id="world-map"></div>
+                <div id="map-error" class="error-text"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+    <script src="map.js"></script>
+</body>
+
+</html>

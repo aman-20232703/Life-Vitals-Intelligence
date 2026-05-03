@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback & Experience | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="feedback">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main">
+            <h1 class="page-title">Feedback & Experience</h1>
+            <p class="page-subtitle">Help us improve by sharing your experience and insights about LifeVitals.</p>
+
+            <!-- Feedback Section -->
+            <section class="card">
+                <h2 style="margin-top: 0;">Website Feedback</h2>
+                <p style="margin: 0 0 18px; color: var(--muted);">Tell us about your experience using LifeVitals. Your
+                    feedback helps us improve.</p>
+                <form id="feedback-form" class="grid" style="gap: 12px;">
+                    <div class="form-row">
+                        <div>
+                            <label for="feedback_overall_rating">Overall Rating</label>
+                            <select id="feedback_overall_rating" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="feedback_ease_of_use">Ease of Use</label>
+                            <select id="feedback_ease_of_use" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Very Easy</option>
+                                <option value="4">4 - Easy</option>
+                                <option value="3">3 - Neutral</option>
+                                <option value="2">2 - Difficult</option>
+                                <option value="1">1 - Very Difficult</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="feedback_features_used">Features You Used</label>
+                            <textarea id="feedback_features_used"
+                                placeholder="e.g., Life Expectancy Prediction, Analytics, History tracking..."
+                                required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="feedback_comments">Additional Comments</label>
+                            <textarea id="feedback_comments"
+                                placeholder="Tell us what you liked, disliked, or would like to see improved..."
+                                required></textarea>
+                        </div>
+                    </div>
+                    <div id="feedback-error" class="error-message" style="display:none;"></div>
+                    <button id="feedback-submit" class="btn btn-primary" type="submit">Submit Feedback</button>
+                </form>
+            </section>
+
+            <!-- Contact Form Section -->
+            <section class="card" style="margin-top: 24px;">
+                <h2 style="margin-top: 0;">Contact Us</h2>
+                <p style="margin: 0 0 18px; color: var(--muted);">Have a question or need support? Get in touch with our
+                    team.</p>
+                <form id="contact-form" class="grid" style="gap: 12px;">
+                    <div class="form-row">
+                        <div>
+                            <label for="contact_name">Name</label>
+                            <input id="contact_name" placeholder="Your full name" required />
+                        </div>
+                        <div>
+                            <label for="contact_email">Email</label>
+                            <input id="contact_email" type="email" placeholder="your@email.com" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="contact_subject">Subject</label>
+                            <input id="contact_subject" placeholder="What is this about?" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="contact_message">Message</label>
+                            <textarea id="contact_message" placeholder="Your message here..." required></textarea>
+                        </div>
+                    </div>
+                    <div id="contact-error" class="error-message" style="display:none;"></div>
+                    <button id="contact-submit" class="btn btn-primary" type="submit">Send Message</button>
+                </form>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="card" style="margin-top: 24px;">
+                <h2 style="margin-top: 0;">Travel & Experience Rating</h2>
+                <p style="margin: 0 0 18px; color: var(--muted);">Share your experience from visiting other countries.
+                    Rate features that impact life expectancy.</p>
+                <form id="experience-form" class="grid" style="gap: 12px;">
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_country_visited">Country Visited</label>
+                            <input id="experience_country_visited" placeholder="Which country did you visit?"
+                                required />
+                        </div>
+                        <div>
+                            <label for="experience_visit_duration">Duration (Days)</label>
+                            <input id="experience_visit_duration" type="number" placeholder="Number of days" required />
+                        </div>
+                    </div>
+
+                    <!-- Healthcare Rating -->
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_healthcare">Healthcare Quality</label>
+                            <select id="experience_healthcare" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="experience_nutrition">Nutrition & Food Quality</label>
+                            <select id="experience_nutrition" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Environmental Rating -->
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_environment">Environmental Quality (Air, Water)</label>
+                            <select id="experience_environment" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="experience_safety">Safety & Security</label>
+                            <select id="experience_safety" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Education & Access Ratings -->
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_education">Education Access</label>
+                            <select id="experience_education" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="experience_physical_activity">Physical Activity Opportunities</label>
+                            <select id="experience_physical_activity" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Overall Experience -->
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_overall">Overall Life Experience</label>
+                            <select id="experience_overall" required>
+                                <option value="">Select rating...</option>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Good</option>
+                                <option value="3">3 - Average</option>
+                                <option value="2">2 - Poor</option>
+                                <option value="1">1 - Very Poor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div>
+                            <label for="experience_comments">Experience Details</label>
+                            <textarea id="experience_comments"
+                                placeholder="Share any additional insights about your experience..."
+                                required></textarea>
+                        </div>
+                    </div>
+                    <div id="experience-error" class="error-message" style="display:none;"></div>
+                    <button id="experience-submit" class="btn btn-primary" type="submit">Submit Experience
+                        Rating</button>
+                </form>
+            </section>
+
+            <!-- Success Message -->
+            <div id="feedback-success" class="card"
+                style="margin-top: 24px; display: none; background: rgba(15, 153, 96, 0.1); border: 1px solid rgba(145, 255, 202, 0.28);">
+                <p style="margin: 0; color: #0f9960; font-weight: 500;">✓ Thank you for your submission! Your feedback
+                    helps us improve LifeVitals.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

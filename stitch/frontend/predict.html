@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predict | LifeVitals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body data-page="predict">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">LifeVitals</div>
+            <a class="nav-link" data-nav="dashboard" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" data-nav="predict" href="predict.html">Predict</a>
+            <a class="nav-link" data-nav="analytics" href="analytics.html">Analytics</a>
+            <a class="nav-link" data-nav="map" href="map.html">World Map</a>
+            <a class="nav-link" data-nav="history" href="history.html">History</a>
+            <a class="nav-link" data-nav="profile" href="profile.html">Profile</a>
+            <a class="nav-link" data-nav="feedback" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="#" data-logout>Logout</a>
+        </aside>
+
+        <main class="main">
+            <h1 class="page-title">Prediction Workspace</h1>
+            <p class="page-subtitle">Switch between life expectancy, economic, health, and social analysis modules.</p>
+
+            <section class="card prediction-guide-card">
+                <h3 style="margin:0 0 8px;">How to Use This Page</h3>
+                <ol class="prediction-guide-list">
+                    <li>Pick a module tab based on the analysis you want.</li>
+                    <li>Use <strong>Autofill</strong> if you want quick sample values, or enter your own values.</li>
+                    <li>Enter realistic numbers only. Keep percentages between 0 and 100 where mentioned.</li>
+                    <li>Click the module button to run prediction and read the result, insight, and policy tips.</li>
+                </ol>
+            </section>
+
+            <section class="card">
+                <div class="tabs" role="tablist" aria-label="Prediction analysis tabs">
+                    <button class="tab-button active" type="button" data-tab-button="life">Life Expectancy</button>
+                    <button class="tab-button" type="button" data-tab-button="economy">Economy</button>
+                    <button class="tab-button" type="button" data-tab-button="health">Health</button>
+                    <button class="tab-button" type="button" data-tab-button="social">Social</button>
+                </div>
+
+                <div class="analysis-layout">
+                    <div class="analysis-panels">
+                        <section class="tab-panel active" data-tab-panel="life">
+                            <div class="grid">
+                                <div
+                                    style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                                    <h2 style="margin:0;">Life Expectancy Prediction</h2>
+                                    <button id="life-autofill-btn" class="btn btn-secondary" type="button">Autofill from
+                                        Profile</button>
+                                </div>
+                                <p class="module-help-text">Fill all fields with latest available values for the
+                                    selected year.
+                                    This module estimates life expectancy in years.</p>
+                                <form id="life-form" class="grid" style="gap:14px;" action="javascript:void(0)">
+                                    <div class="form-row">
+                                        <div><label for="life-year">Year</label><input id="life-year" type="number"
+                                                required /><small class="field-help">Enter dataset year (for example:
+                                                2022,
+                                                2023, 2026).</small></div>
+                                        <div><label for="life-adult-mortality">Adult Mortality</label><input
+                                                id="life-adult-mortality" type="number" step="0.1" required /><small
+                                                class="field-help">Number of adult deaths per population unit from your
+                                                source.</small></div>
+                                        <div><label for="life-infant-deaths">Infant Deaths</label><input
+                                                id="life-infant-deaths" type="number" step="0.1" required /><small
+                                                class="field-help">Infant deaths count/rate value from your health
+                                                data.</small></div>
+                                        <div><label for="life-alcohol">Alcohol</label><input id="life-alcohol"
+                                                type="number" step="0.1" required /><small class="field-help">Average
+                                                alcohol consumption value (per capita).</small></div>
+                                        <div><label for="life-gdp">GDP</label><input id="life-gdp" type="number"
+                                                step="0.1" required /><small class="field-help">GDP value from the same
+                                                year and country context.</small></div>
+                                        <div><label for="life-bmi">BMI</label><input id="life-bmi" type="number"
+                                                step="0.1" required /><small class="field-help">Body Mass Index value;
+                                                use profile BMI or average population BMI.</small></div>
+                                        <div><label for="life-schooling">Schooling</label><input id="life-schooling"
+                                                type="number" step="0.1" required /><small class="field-help">Average
+                                                years of schooling (for example: 10 to 16).</small></div>
+                                        <div><label for="life-hiv-aids">HIV/AIDS</label><input id="life-hiv-aids"
+                                                type="number" step="0.1" required /><small class="field-help">HIV/AIDS
+                                                burden value from your reference dataset.</small></div>
+                                    </div>
+                                    <button id="life-submit" class="btn btn-primary" type="submit">Predict Life
+                                        Expectancy</button>
+                                </form>
+                                <div id="life-error" class="error-text"></div>
+                            </div>
+                            <div id="life-result" class="card hidden" style="margin-top:16px;">
+                                <h3 style="margin-top:0;">Prediction Result</h3>
+                                <div class="grid grid-3">
+                                    <div class="result-metric">
+                                        <p class="result-label">Predicted Life Expectancy</p>
+                                        <p id="life-prediction" class="result-value">--</p>
+                                    </div>
+                                    <div class="result-metric">
+                                        <p class="result-label">Confidence Score</p>
+                                        <p id="life-confidence" class="result-value">--</p>
+                                    </div>
+                                    <div class="result-metric">
+                                        <p class="result-label">Status</p>
+                                        <p id="life-status" class="result-value">--</p>
+                                    </div>
+                                </div>
+                                <p id="life-insight" class="analysis-note" style="margin-top:12px;"></p>
+                                <div class="policy-panel" style="margin-top:14px;">
+                                    <h4 class="policy-title">Current Status &amp; Policy Recommendations</h4>
+                                    <p id="life-policy-status" class="policy-status">--</p>
+                                    <ul id="life-policy-recs" class="policy-list"></ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="tab-panel" data-tab-panel="economy">
+                            <div class="grid">
+                                <div
+                                    style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                                    <h2 style="margin:0;">Economic Analysis</h2>
+                                    <button id="economy-autofill-btn" class="btn btn-secondary" type="button">Autofill
+                                        Module</button>
+                                </div>
+                                <p class="module-help-text">Use economic indicators for the same country/year context.
+                                    This module returns an economy score out of 100.</p>
+                                <form id="economy-form" class="grid" style="gap:14px;" action="javascript:void(0)">
+                                    <div class="form-row">
+                                        <div><label for="economy-gdp">GDP</label><input id="economy-gdp" type="number"
+                                                step="0.1" required /><small class="field-help">Gross Domestic Product
+                                                value for selected context.</small></div>
+                                        <div><label for="economy-income-composition">Income Composition of
+                                                Resources</label><input id="economy-income-composition" type="number"
+                                                min="0" max="1" step="0.001" required /><small class="field-help">Range:
+                                                0 to 1 (example: 0.65).</small></div>
+                                        <div><label for="economy-percentage-expenditure">Percentage
+                                                Expenditure</label><input id="economy-percentage-expenditure"
+                                                type="number" step="0.1" required /><small class="field-help">Health or
+                                                public spending percentage value from dataset.</small>
+                                        </div>
+                                        <div><label for="economy-population">Population</label><input
+                                                id="economy-population" type="number" step="1" required /><small
+                                                class="field-help">Total population value (integer).</small></div>
+                                        <div style="grid-column: span 2;"><label for="economy-total-expenditure">Total
+                                                Expenditure</label><input id="economy-total-expenditure" type="number"
+                                                step="0.1" required /><small class="field-help">Total expenditure share;
+                                                use value from official source.</small></div>
+                                    </div>
+                                    <button id="economy-submit" class="btn btn-primary" type="submit">Analyze
+                                        Economy</button>
+                                </form>
+                                <div id="economy-error" class="error-text"></div>
+                            </div>
+                            <div id="economy-result" class="card hidden" style="margin-top:16px;">
+                                <h3 style="margin-top:0;">Economic Result</h3>
+                                <div class="grid grid-2">
+                                    <div class="result-metric">
+                                        <p class="result-label">Economic Score</p>
+                                        <p id="economy-score" class="result-value">--</p>
+                                    </div>
+                                    <div class="result-metric">
+                                        <p class="result-label">Status</p>
+                                        <p id="economy-status" class="result-value">--</p>
+                                    </div>
+                                </div>
+                                <p id="economy-insight" class="analysis-note" style="margin-top:12px;"></p>
+                                <div class="policy-panel" style="margin-top:14px;">
+                                    <h4 class="policy-title">Current Status &amp; Policy Recommendations</h4>
+                                    <p id="economy-policy-status" class="policy-status">--</p>
+                                    <ul id="economy-policy-recs" class="policy-list"></ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="tab-panel" data-tab-panel="health">
+                            <div class="grid">
+                                <div
+                                    style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                                    <h2 style="margin:0;">Health Analysis</h2>
+                                    <button id="health-autofill-btn" class="btn btn-secondary" type="button">Autofill
+                                        Module</button>
+                                </div>
+                                <p class="module-help-text">Enter disease, mortality, and vaccination values.
+                                    This module estimates overall health risk score.</p>
+                                <form id="health-form" class="grid" style="gap:14px;" action="javascript:void(0)">
+                                    <div class="form-row">
+                                        <div><label for="health-adult-mortality">Adult Mortality</label><input
+                                                id="health-adult-mortality" type="number" step="0.1" required /><small
+                                                class="field-help">Adult mortality indicator from your source.
+                                            </small></div>
+                                        <div><label for="health-infant-deaths">Infant Deaths</label><input
+                                                id="health-infant-deaths" type="number" step="0.1" required /><small
+                                                class="field-help">Infant death indicator value.</small></div>
+                                        <div><label for="health-bmi">BMI</label><input id="health-bmi" type="number"
+                                                step="0.1" required /><small class="field-help">Average BMI or measured
+                                                BMI value.</small></div>
+                                        <div><label for="health-hiv-aids">HIV/AIDS</label><input id="health-hiv-aids"
+                                                type="number" step="0.1" required /><small class="field-help">HIV/AIDS
+                                                burden value.</small></div>
+                                        <div><label for="health-hepatitis-b">Hepatitis B Coverage
+                                                %</label><input id="health-hepatitis-b" type="number" min="0" max="100"
+                                                step="0.1" required /><small class="field-help">Vaccination coverage:
+                                                0% to 100%.</small></div>
+                                        <div><label for="health-polio">Polio Coverage
+                                                %</label><input id="health-polio" type="number" min="0" max="100"
+                                                step="0.1" required /><small class="field-help">Vaccination coverage:
+                                                0% to 100%.</small></div>
+                                        <div><label for="health-diphtheria">Diphtheria Coverage
+                                                %</label><input id="health-diphtheria" type="number" min="0" max="100"
+                                                step="0.1" required /><small class="field-help">Vaccination coverage:
+                                                0% to 100%.</small></div>
+                                        <div><label for="health-under-five-deaths">Under-five Deaths</label><input
+                                                id="health-under-five-deaths" type="number" step="0.1" required /><small
+                                                class="field-help">Deaths indicator for children under 5.</small></div>
+                                    </div>
+                                    <button id="health-submit" class="btn btn-primary" type="submit">Analyze
+                                        Health</button>
+                                </form>
+                                <div id="health-error" class="error-text"></div>
+                            </div>
+                            <div id="health-result" class="card hidden" style="margin-top:16px;">
+                                <h3 style="margin-top:0;">Health Result</h3>
+                                <div class="grid grid-2">
+                                    <div class="result-metric">
+                                        <p class="result-label">Health Score</p>
+                                        <p id="health-score" class="result-value">--</p>
+                                    </div>
+                                    <div class="result-metric">
+                                        <p class="result-label">Risk Level</p>
+                                        <p id="health-risk" class="result-value">--</p>
+                                    </div>
+                                </div>
+                                <p id="health-insight" class="analysis-note" style="margin-top:12px;"></p>
+                                <div class="policy-panel" style="margin-top:14px;">
+                                    <h4 class="policy-title">Current Status &amp; Policy Recommendations</h4>
+                                    <p id="health-policy-status" class="policy-status">--</p>
+                                    <ul id="health-policy-recs" class="policy-list"></ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="tab-panel" data-tab-panel="social">
+                            <div class="grid">
+                                <div
+                                    style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+                                    <h2 style="margin:0;">Social Condition Analysis</h2>
+                                    <button id="social-autofill-btn" class="btn btn-secondary" type="button">Autofill
+                                        Module</button>
+                                </div>
+                                <p class="module-help-text">Provide education and social condition indicators for your
+                                    region. This module returns social development category.</p>
+                                <form id="social-form" class="grid" style="gap:14px;" action="javascript:void(0)">
+                                    <div class="form-row">
+                                        <div><label for="social-schooling">Schooling (Years)</label><input
+                                                id="social-schooling" type="number" min="0" step="0.1" required /><small
+                                                class="field-help">Average years of education completed.</small></div>
+                                        <div><label for="social-income-composition">Income Composition of
+                                                Resources</label><input id="social-income-composition" type="number"
+                                                min="0" max="1" step="0.001" required /><small class="field-help">Range:
+                                                0 to 1 (example: 0.55).</small></div>
+                                        <div><label for="social-alcohol">Alcohol</label><input id="social-alcohol"
+                                                type="number" step="0.1" required /><small class="field-help">Alcohol
+                                                consumption indicator.</small></div>
+                                        <div><label for="social-status">Status</label><select id="social-status"
+                                                required>
+                                                <option value="">Select</option>
+                                                <option>Developing</option>
+                                                <option>Developed</option>
+                                            </select><small class="field-help">Choose development stage that best fits
+                                                your context.</small>
+                                        </div>
+                                        <div style="grid-column: span 2;"><label
+                                                for="social-population">Population</label><input id="social-population"
+                                                type="number" step="1" required /><small class="field-help">Total
+                                                population value (integer).</small></div>
+                                    </div>
+                                    <button id="social-submit" class="btn btn-primary" type="submit">Analyze Social
+                                        Conditions</button>
+                                </form>
+                                <div id="social-error" class="error-text"></div>
+                            </div>
+                            <div id="social-result" class="card hidden" style="margin-top:16px;">
+                                <h3 style="margin-top:0;">Social Result</h3>
+                                <div class="grid grid-2">
+                                    <div class="result-metric">
+                                        <p class="result-label">Social Development Score</p>
+                                        <p id="social-score" class="result-value">--</p>
+                                    </div>
+                                    <div class="result-metric">
+                                        <p class="result-label">Category</p>
+                                        <p id="social-category" class="result-value">--</p>
+                                    </div>
+                                </div>
+                                <p id="social-insight" class="analysis-note" style="margin-top:12px;"></p>
+                                <div class="policy-panel" style="margin-top:14px;">
+                                    <h4 class="policy-title">Current Status &amp; Policy Recommendations</h4>
+                                    <p id="social-policy-status" class="policy-status">--</p>
+                                    <ul id="social-policy-recs" class="policy-list"></ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <aside class="analysis-feature-grid">
+                        <section class="card feature-importance-card">
+                            <h3 style="margin-top:0;">Feature Importance & Why It Matters</h3>
+                            <p id="feature-importance-meta" class="analysis-note" style="margin-bottom:12px;">
+                                Choose a module or run a prediction to see which features matter most.
+                            </p>
+                            <div id="feature-importance-list" class="feature-importance-list"></div>
+                        </section>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js?v=20260502a"></script>
+</body>
+
+</html>

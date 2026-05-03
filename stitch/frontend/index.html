@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Expectancy Tourism Analytics</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body[data-page="landing"] {
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.15), transparent 25%),
+                linear-gradient(to bottom right, #eff6ff, #ffffff, #ecfdf5);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #10b981);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.35s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), 0 0 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .fade {
+            animation: fade 1s ease;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body data-page="landing" class="min-h-screen relative text-gray-800">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">Dark</button>
+
+    <div class="absolute top-0 left-0 w-72 h-72 bg-blue-300 rounded-full blur-3xl opacity-20 floating"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-green-300 rounded-full blur-3xl opacity-20 floating"></div>
+
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass px-8 py-4 rounded-full shadow-2xl w-[95%] max-w-6xl">
+        <div class="flex items-center justify-between gap-4">
+            <a href="index.html" class="flex items-center gap-4">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-green-500 flex items-center justify-center text-white text-2xl shadow-xl">
+                    🌍
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl gradient-text">Life Expectancy AI</h1>
+                    <p class="text-xs text-gray-500">Smart Tourism &amp; Wellness Analytics</p>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                <a href="#features" class="hover:text-blue-500 transition">Features</a>
+                <a href="#analytics" class="hover:text-blue-500 transition">Analytics</a>
+                <a href="#modules" class="hover:text-blue-500 transition">Modules</a>
+                <a href="#about" class="hover:text-blue-500 transition">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-6 pt-40 pb-24 fade">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <div>
+                <div
+                    class="inline-flex items-center gap-3 bg-white/70 border border-blue-100 px-5 py-3 rounded-full shadow-lg mb-8">
+                    <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                    <p class="font-semibold text-gray-700">AI Powered Country Health Intelligence</p>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight">
+                    Travel Smarter With
+                    <span class="gradient-text">Life Expectancy Analytics</span>
+                </h1>
+
+                <p class="text-gray-600 text-xl mt-8 leading-relaxed max-w-2xl">
+                    Discover healthcare quality, nutrition levels, immunization conditions,
+                    economic wellness, and expected lifespan before visiting any country.
+                    Make safer travel decisions using AI-driven health insights.
+                </p>
+
+                <div class="flex flex-wrap gap-5 mt-12">
+                    <button id="landing-get-started"
+                        class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-5 rounded-3xl text-lg font-bold shadow-2xl hover:scale-105 transition-all"
+                        type="button">
+                        Start Analytics
+                    </button>
+                    <button id="landing-explore-btn"
+                        class="glass px-8 py-5 rounded-3xl text-lg font-semibold hover:scale-105 transition-all"
+                        type="button">
+                        Explore Features
+                    </button>
+                </div>
+
+                <div class="mt-10 glass rounded-3xl p-6">
+                    <label for="landing-search" class="block text-sm font-semibold text-gray-700 mb-3">Where do you want
+                        to go?</label>
+                    <input id="landing-search" type="search" placeholder="Search a country or region"
+                        class="w-full p-4 rounded-2xl border border-blue-100 outline-none focus:ring-4 focus:ring-blue-200"
+                        autocomplete="off">
+                    <p id="landing-search-hint" class="text-sm text-gray-500 mt-3">Try Japan, Canada, Portugal, or New
+                        Zealand.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mt-6" role="tablist" aria-label="Travel purpose">
+                    <button class="purpose-pill active" type="button" data-purpose="tourism" aria-pressed="true">✈
+                        Tourism</button>
+                    <button class="purpose-pill" type="button" data-purpose="job" aria-pressed="false">💼 Job</button>
+                    <button class="purpose-pill" type="button" data-purpose="settlement" aria-pressed="false">🏡
+                        Settlement</button>
+                    <button class="purpose-pill" type="button" data-purpose="investment" aria-pressed="false">🏘
+                        Investment</button>
+                </div>
+                <p id="landing-purpose-message" class="text-gray-600 mt-3">Tourism mode: understand life expectancy,
+                    safety, and travel considerations to plan your journey with confidence.</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-12">
+                    <div class="glass rounded-3xl p-5 text-center shadow-xl card-hover">
+                        <h2 class="text-4xl font-extrabold text-blue-500">190+</h2>
+                        <p class="text-gray-600 mt-2">Countries</p>
+                    </div>
+                    <div class="glass rounded-3xl p-5 text-center shadow-xl card-hover">
+                        <h2 class="text-4xl font-extrabold text-green-500">AI</h2>
+                        <p class="text-gray-600 mt-2">Predictions</p>
+                    </div>
+                    <div class="glass rounded-3xl p-5 text-center shadow-xl card-hover">
+                        <h2 class="text-4xl font-extrabold text-blue-500">24/7</h2>
+                        <p class="text-gray-600 mt-2">Analytics</p>
+                    </div>
+                    <div class="glass rounded-3xl p-5 text-center shadow-xl card-hover">
+                        <h2 class="text-4xl font-extrabold text-green-500">Real</h2>
+                        <p class="text-gray-600 mt-2">Insights</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="glass rounded-[40px] p-8 shadow-2xl border border-white/30 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-blue-400 opacity-10 rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-40 h-40 bg-green-400 opacity-10 rounded-full blur-3xl"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h2 class="text-3xl font-extrabold text-gray-800">Country Wellness Overview</h2>
+                                <p class="text-gray-500 mt-2">AI generated travel health report</p>
+                                <p class="text-sm text-gray-500 mt-2">Spotlight: <span id="landing-spotlight-name"
+                                        class="font-bold text-gray-700">Japan</span></p>
+                            </div>
+                            <div class="text-5xl">📊</div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div
+                                class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-3xl p-6 shadow-xl">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="opacity-80">Life Expectancy</p>
+                                        <h2 id="landing-spotlight-life" class="text-5xl font-extrabold mt-3">78.2</h2>
+                                    </div>
+                                    <div class="text-6xl">🌎</div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="bg-white rounded-3xl p-6 shadow-lg card-hover">
+                                    <p class="text-gray-500">Healthcare</p>
+                                    <h3 id="landing-spotlight-safety"
+                                        class="text-3xl font-bold text-green-500 mt-3 badge safe">Excellent</h3>
+                                </div>
+                                <div class="bg-white rounded-3xl p-6 shadow-lg card-hover">
+                                    <p class="text-gray-500">Nutrition</p>
+                                    <h3 class="text-3xl font-bold text-blue-500 mt-3">82%</h3>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-3xl p-6 shadow-lg">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-semibold">Travel Safety Score</span>
+                                    <span class="font-bold text-blue-500">86/100</span>
+                                </div>
+                                <div class="w-full h-5 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-[86%]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="landing-spotlight-copy" class="text-gray-600 mt-6 leading-relaxed">
+                            A concise view of expected life span, healthcare readiness, and what you can expect while
+                            visiting or living in this country.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="landing-destinations" class="max-w-7xl mx-auto px-6 py-10 fade">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-extrabold text-gray-800">Popular <span class="gradient-text">Destinations</span>
+            </h2>
+            <p class="text-gray-600 mt-4">Select a country card to update live insights and tips.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <button class="destination-card active text-left bg-white rounded-3xl p-5 shadow-xl card-hover"
+                type="button" data-destination-card data-id="japan" data-name="Japan" data-emoji="🇯🇵"
+                data-life="84 years" data-safety="Safe" data-safety-class="safe"
+                data-copy="Excellent healthcare, efficient transport, and a calm environment for tourism or long stays."
+                data-tip="Best for clean cities, efficient transit, and long-term safety.">
+                <h3 class="text-2xl font-bold">Japan</h3>
+                <p class="text-gray-600 mt-2">Life expectancy: 84 years</p>
+            </button>
+
+            <button class="destination-card text-left bg-white rounded-3xl p-5 shadow-xl card-hover" type="button"
+                data-destination-card data-id="canada" data-name="Canada" data-emoji="🇨🇦" data-life="82 years"
+                data-safety="Safe" data-safety-class="safe"
+                data-copy="Balanced economy, strong public services, and a friendly fit for job seekers and settlers."
+                data-tip="Good for work visas, social stability, and reliable infrastructure.">
+                <h3 class="text-2xl font-bold">Canada</h3>
+                <p class="text-gray-600 mt-2">Life expectancy: 82 years</p>
+            </button>
+
+            <button class="destination-card text-left bg-white rounded-3xl p-5 shadow-xl card-hover" type="button"
+                data-destination-card data-id="portugal" data-name="Portugal" data-emoji="🇵🇹" data-life="81 years"
+                data-safety="Moderate" data-safety-class="moderate"
+                data-copy="Warm weather, good quality of life, and a balanced cost profile for tourism and settlement."
+                data-tip="Ideal for slow travel, retirement planning, and balanced living costs.">
+                <h3 class="text-2xl font-bold">Portugal</h3>
+                <p class="text-gray-600 mt-2">Life expectancy: 81 years</p>
+            </button>
+
+            <button class="destination-card text-left bg-white rounded-3xl p-5 shadow-xl card-hover" type="button"
+                data-destination-card data-id="newzealand" data-name="New Zealand" data-emoji="🇳🇿"
+                data-life="83 years" data-safety="Safe" data-safety-class="safe"
+                data-copy="Scenic, peaceful, and ideal for a safer lifestyle with strong outdoor appeal."
+                data-tip="Best for clean air, outdoor travel, and quiet living conditions.">
+                <h3 class="text-2xl font-bold">New Zealand</h3>
+                <p class="text-gray-600 mt-2">Life expectancy: 83 years</p>
+            </button>
+        </div>
+
+        <p id="landing-empty-state" class="hidden text-center text-gray-600 mt-6">No countries matched your search. Try
+            a different destination name.</p>
+    </section>
+
+    <section id="analytics" class="max-w-7xl mx-auto px-6 py-20 fade">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-extrabold text-gray-800">Explore The <span class="gradient-text">World Health
+                    Map</span></h2>
+            <p class="text-gray-600 text-xl mt-6 max-w-4xl mx-auto leading-relaxed">
+                Our AI-powered tourism analytics platform helps travelers understand global healthcare,
+                nutrition quality, immunization coverage, economic conditions, and life expectancy before
+                visiting any country.
+            </p>
+        </div>
+
+        <div class="glass rounded-[40px] p-8 md:p-12 shadow-2xl overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-72 h-72 bg-blue-300 opacity-10 blur-3xl rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-green-300 opacity-10 blur-3xl rounded-full"></div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+                <div>
+                    <h3 class="text-4xl font-extrabold text-gray-800 leading-tight">
+                        Smart Tourism Meets <span class="gradient-text">Healthcare Intelligence</span>
+                    </h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mt-8">
+                        Before visiting a country, travelers often want to understand the quality of life,
+                        healthcare systems, disease risks, nutrition standards, and economic conditions.
+                        Our platform combines AI prediction models with public health indicators to estimate
+                        the expected life expectancy and wellness environment of each country.
+                    </p>
+
+                    <div class="bg-white rounded-3xl p-6 mt-8 shadow-lg">
+                        <h4 class="text-2xl font-bold">Live Destination Insight</h4>
+                        <p class="mt-3 text-gray-600">Visiting <span id="landing-sample-country"
+                                class="font-bold text-gray-800">Japan</span> <span id="landing-sample-emoji">🇯🇵</span>
+                        </p>
+                        <p class="mt-2">Life Expectancy: <strong id="landing-sample-life">84 years</strong></p>
+                        <p class="mt-1">Safety: <strong id="landing-sample-safety" class="badge safe">High</strong></p>
+                        <p id="landing-sample-copy" class="mt-3 text-gray-600">This insight shows expected life span and
+                            contextual factors (health, safety, economy) to help plan travel or long-term stays.</p>
+                        <p class="mt-3 text-gray-700"><span class="font-semibold">Recommendation:</span> <span
+                                id="landing-sample-recommendation">Best for a safe, clean, and highly organized
+                                trip.</span></p>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center">
+                    <div class="bg-white rounded-[35px] p-6 shadow-2xl overflow-hidden w-full max-w-xl">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+                            alt="World Map" class="w-full object-cover rounded-3xl">
+
+                        <div class="grid grid-cols-2 gap-4 mt-6">
+                            <div class="bg-blue-50 rounded-2xl p-5 text-center">
+                                <h3 class="text-3xl font-extrabold text-blue-500">190+</h3>
+                                <p class="text-gray-600 mt-2">Countries</p>
+                            </div>
+                            <div class="bg-green-50 rounded-2xl p-5 text-center">
+                                <h3 class="text-3xl font-extrabold text-green-500">AI</h3>
+                                <p class="text-gray-600 mt-2">Analytics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modules" class="max-w-7xl mx-auto px-6 py-24 fade">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-extrabold text-gray-800">Choose Your <span class="gradient-text">Analytics
+                    Module</span></h2>
+            <p class="text-gray-600 text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+                Explore specialized AI-powered tourism and wellness intelligence modules designed to help travelers
+                understand global country conditions.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <a href="predict.html"
+                class="glass rounded-[35px] p-8 shadow-2xl card-hover block relative overflow-hidden">
+                <div class="text-6xl">🏥</div>
+                <h3 class="text-3xl font-bold mt-6 text-gray-800">Health</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Analyze healthcare systems, mortality trends, and country
+                    wellness conditions.</p>
+                <div class="mt-8 text-blue-500 font-bold text-lg">Open Module →</div>
+            </a>
+            <a href="analytics.html"
+                class="glass rounded-[35px] p-8 shadow-2xl card-hover block relative overflow-hidden">
+                <div class="text-6xl">🍎</div>
+                <h3 class="text-3xl font-bold mt-6 text-gray-800">Nutrition</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Explore BMI levels, nutrition quality, food standards, and
+                    wellness indicators.</p>
+                <div class="mt-8 text-green-500 font-bold text-lg">Open Module →</div>
+            </a>
+            <a href="map.html" class="glass rounded-[35px] p-8 shadow-2xl card-hover block relative overflow-hidden">
+                <div class="text-6xl">💉</div>
+                <h3 class="text-3xl font-bold mt-6 text-gray-800">Immunization</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Understand vaccination coverage, disease prevention, and
+                    public health safety.</p>
+                <div class="mt-8 text-cyan-500 font-bold text-lg">Open Module →</div>
+            </a>
+            <a href="predict.html"
+                class="glass rounded-[35px] p-8 shadow-2xl card-hover block relative overflow-hidden">
+                <div class="text-6xl">💰</div>
+                <h3 class="text-3xl font-bold mt-6 text-gray-800">Economic</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Compare GDP, expenditure, economic strength, and living
+                    standards.</p>
+                <div class="mt-8 text-yellow-500 font-bold text-lg">Open Module →</div>
+            </a>
+        </div>
+    </section>
+
+    <section id="features" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl font-extrabold">Powerful <span class="gradient-text">AI Features</span></h2>
+            <p class="text-gray-600 text-xl mt-6 max-w-3xl mx-auto">Explore advanced health and tourism analytics
+                designed for safer international travel.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div class="bg-white rounded-[35px] p-8 shadow-xl card-hover">
+                <div class="text-6xl">💉</div>
+                <h3 class="text-3xl font-bold mt-6">Immunization</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Analyze vaccination conditions and disease prevention
+                    levels.</p>
+            </div>
+            <div class="bg-white rounded-[35px] p-8 shadow-xl card-hover">
+                <div class="text-6xl">🍎</div>
+                <h3 class="text-3xl font-bold mt-6">Nutrition</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Understand food quality, BMI trends, and nutrition
+                    standards.</p>
+            </div>
+            <div class="bg-white rounded-[35px] p-8 shadow-xl card-hover">
+                <div class="text-6xl">💰</div>
+                <h3 class="text-3xl font-bold mt-6">Economy</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Compare GDP, expenditure, and economic living conditions.
+                </p>
+            </div>
+            <div class="bg-white rounded-[35px] p-8 shadow-xl card-hover">
+                <div class="text-6xl">🏥</div>
+                <h3 class="text-3xl font-bold mt-6">Healthcare</h3>
+                <p class="text-gray-600 mt-4 leading-relaxed">Discover healthcare strength and mortality-based insights.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="max-w-7xl mx-auto px-6 py-20 fade">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-extrabold text-gray-800">Share Your <span class="gradient-text">Experience</span>
+            </h2>
+            <p class="text-gray-600 text-xl mt-6 max-w-3xl mx-auto">Help us improve the tourism life expectancy platform
+                with your valuable feedback.</p>
+        </div>
+
+        <div class="glass rounded-[40px] p-8 md:p-12 shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-extrabold text-gray-800 leading-tight">Your Feedback Helps Us Build Better
+                        AI Tourism Insights</h3>
+                    <p class="text-gray-600 text-lg mt-8 leading-relaxed">Share your travel experiences, platform
+                        suggestions, and healthcare observations. Your feedback helps improve prediction accuracy and
+                        user experience.</p>
+                </div>
+
+                <div class="bg-white rounded-[35px] p-8 shadow-xl">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="font-semibold text-gray-700 text-lg">Full Name</label>
+                            <input type="text" placeholder="Enter your name"
+                                class="w-full mt-3 p-5 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-200 outline-none">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-gray-700 text-lg">Email</label>
+                            <input type="email" placeholder="Enter your email"
+                                class="w-full mt-3 p-5 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-200 outline-none">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-gray-700 text-lg">Your Feedback</label>
+                            <textarea rows="5" placeholder="Share your experience or suggestions..."
+                                class="w-full mt-3 p-5 rounded-2xl border border-gray-200 focus:ring-4 focus:ring-blue-200 outline-none resize-none"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-5 rounded-3xl text-xl font-bold shadow-2xl hover:scale-[1.02] transition-all">Submit
+                            Feedback</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 pb-24">
+        <div
+            class="bg-gradient-to-r from-blue-500 to-green-500 rounded-[45px] p-12 md:p-16 text-white shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="relative z-10 text-center">
+                <h2 class="text-5xl font-extrabold leading-tight">Ready To Explore Countries Smarter?</h2>
+                <p class="text-white/90 text-xl mt-8 max-w-3xl mx-auto leading-relaxed">Start analyzing country health
+                    conditions, healthcare quality, nutrition standards, and life expectancy before planning your next
+                    journey.</p>
+                <a href="#modules"
+                    class="mt-12 inline-block bg-white text-blue-500 px-10 py-5 rounded-3xl text-xl font-bold shadow-2xl hover:scale-105 transition-all">Launch
+                    Analytics Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="glass rounded-3xl p-8">
+            <h3 class="text-2xl font-bold">Quick recommendations</h3>
+            <ul id="landing-tips-list" class="mt-4 space-y-2 list-disc pl-5 text-gray-700"></ul>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-gray-500 text-lg">
+        © 2026 Life Expectancy Tourism Analytics • AI Powered Wellness Intelligence
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
