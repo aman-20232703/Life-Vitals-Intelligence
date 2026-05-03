@@ -1,6 +1,6 @@
 const API_BASE_FALLBACKS = (() => {
   const stored = localStorage.getItem("lifevitals_api_base");
-  const bases = [stored, "http://127.0.0.1:8000", "http://localhost:8000"];
+  const bases = [stored, "http://127.0.0.1:8000", "http://localhost:8000","https://life-vitals-intelligence.onrender.com"];
 
   if (window.location.port === "5500") {
     bases.unshift(
