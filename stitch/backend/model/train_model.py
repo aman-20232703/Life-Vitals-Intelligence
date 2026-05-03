@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from backend.services.model_service import train_model_bundle
+from services.model_service import train_model_bundle
 
 
 if __name__ == "__main__":

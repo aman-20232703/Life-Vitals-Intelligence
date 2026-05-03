@@ -1,10 +1,10 @@
-from backend.services.analysis import (
+from services.analysis import (
     analyze_economy,
     analyze_health,
     analyze_social,
 )
-from backend.services.data_service import get_dataset_repository
-from backend.services.analytics_service import (
+from services.data_service import get_dataset_repository
+from services.analytics_service import (
     calculate_economy_score,
     calculate_health_score,
     calculate_overall_score,
@@ -12,13 +12,13 @@ from backend.services.analytics_service import (
     generate_projection,
     generate_recommendations,
 )
-from backend.services.dashboard_service import (
+from services.dashboard_service import (
     calculate_dashboard_summary,
     compare_with_global_average,
     generate_dashboard_insights,
     generate_dashboard_recommendations,
 )
-from backend.services.model_service import load_model_bundle, predict_life_expectancy, train_model_bundle
+from services.model_service import load_model_bundle, predict_life_expectancy, train_model_bundle
 
 __all__ = [
     "analyze_economy",

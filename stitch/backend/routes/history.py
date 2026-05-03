@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from backend.auth.security import get_current_user
-from backend.database import get_db
-from backend.models.prediction import Prediction
-from backend.models.user import User
-from backend.schemas.prediction import PredictionHistoryItem
+from auth.security import get_current_user
+from database import get_db
+from models.prediction import Prediction
+from models.user import User
+from schemas.prediction import PredictionHistoryItem
 
 router = APIRouter(tags=["history"])
 

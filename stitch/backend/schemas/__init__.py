@@ -1,6 +1,6 @@
-from backend.schemas.prediction import PredictionInput, PredictionResult, SavePredictionRequest
-from backend.schemas.token import Token
-from backend.schemas.user import (
+from schemas.prediction import PredictionInput, PredictionResult, SavePredictionRequest
+from schemas.token import Token
+from schemas.user import (
     LoginRequest,
     ProfileResponse,
     ProfileUpdateRequest,

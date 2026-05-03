@@ -1,17 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.database import Base, engine
-from backend.routes.auth import router as auth_router
-from backend.routes.analytics import router as analytics_router
-from backend.routes.dashboard import router as dashboard_router
-from backend.routes.history import router as history_router
-from backend.routes.map import router as map_router
-from backend.routes.predict import router as predict_router
-from backend.routes.profile import router as profile_router
-from backend.routes.feedback import router as feedback_router
-from backend.services.data_service import get_dataset_repository
-from backend.services.model_service import load_model_bundle
+from database import Base, engine
+from routes.auth import router as auth_router
+from routes.analytics import router as analytics_router
+from routes.dashboard import router as dashboard_router
+from routes.history import router as history_router
+from routes.map import router as map_router
+from routes.predict import router as predict_router
+from routes.profile import router as profile_router
+from routes.feedback import router as feedback_router
+from services.data_service import get_dataset_repository
+from services.model_service import load_model_bundle
 
 # Ensure SQLAlchemy models are imported before table creation.
 from backend import models  # noqa: F401

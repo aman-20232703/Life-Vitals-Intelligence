@@ -6,8 +6,8 @@ from fastapi import APIRouter, Depends, Query
 import pandas as pd
 
 # map endpoints are intentionally public (no auth) so frontend map can load dataset years
-from backend.services.analysis import analyze_economy, analyze_health, analyze_social
-from backend.services.data_service import get_dataset_repository, percentile_score
+from services.analysis import analyze_economy, analyze_health, analyze_social
+from services.data_service import get_dataset_repository, percentile_score
 
 router = APIRouter(tags=["map"])
 

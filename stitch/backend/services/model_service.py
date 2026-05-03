@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 
-from backend.services.data_service import (
+from services.data_service import (
     TARGET_ALIASES,
     get_dataset_repository,
     safe_float,

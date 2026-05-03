@@ -3,8 +3,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
-from backend.services.analytics_service import calculate_overall_score
-from backend.services.data_service import get_dataset_repository, safe_float
+from services.analytics_service import calculate_overall_score
+from services.data_service import get_dataset_repository, safe_float
 
 
 def _clamp(value: float, minimum: float = 0.0, maximum: float = 100.0) -> float:

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.auth.security import get_current_user
-from backend.database import get_db
-from backend.models.prediction import Prediction
-from backend.models.user import User
-from backend.schemas.prediction import (
+from auth.security import get_current_user
+from database import get_db
+from models.prediction import Prediction
+from models.user import User
+from schemas.prediction import (
     EconomyInput,
     EconomyResult,
     HealthInput,
@@ -16,8 +16,8 @@ from backend.schemas.prediction import (
     SocialInput,
     SocialResult,
 )
-from backend.services.analysis import analyze_economy, analyze_health, analyze_social
-from backend.services.model_service import predict_life_expectancy
+from services.analysis import analyze_economy, analyze_health, analyze_social
+from services.model_service import predict_life_expectancy
 
 router = APIRouter(tags=["predict"])
 

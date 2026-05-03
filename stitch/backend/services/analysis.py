@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from backend.services.data_service import get_dataset_repository, percentile_score
+from services.data_service import get_dataset_repository, percentile_score
 
 
 def _clamp(value: float, minimum: float, maximum: float) -> float:

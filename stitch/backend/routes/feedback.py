@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.auth.security import get_current_user
-from backend.database import get_db
-from backend.models.user import User
-from backend.models.feedback import Feedback, Contact, Experience
-from backend.schemas.feedback import (
+from auth.security import get_current_user
+from database import get_db
+from models.user import User
+from models.feedback import Feedback, Contact, Experience
+from schemas.feedback import (
     FeedbackRequest,
     ContactRequest,
     ExperienceRequest,
