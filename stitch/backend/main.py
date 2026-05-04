@@ -14,7 +14,7 @@ from services.data_service import get_dataset_repository
 from services.model_service import load_model_bundle
 
 # Ensure SQLAlchemy models are imported before table creation.
-from backend import models  # noqa: F401
+import models  # noqa: F401
 
 app = FastAPI(title="LifeVitals API", version="1.0.0")
 
