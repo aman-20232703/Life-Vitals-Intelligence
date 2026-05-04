@@ -10,5 +10,4 @@ scikit-learn
 numpy
 joblib
 email-validator
-libsql-client
-sqlalchemy-libsql
+
