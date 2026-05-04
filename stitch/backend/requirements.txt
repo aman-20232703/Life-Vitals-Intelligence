@@ -10,4 +10,4 @@ scikit-learn
 numpy
 joblib
 email-validator
-
+pandas
